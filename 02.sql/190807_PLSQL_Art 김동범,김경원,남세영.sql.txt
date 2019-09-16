@@ -1,0 +1,62 @@
+[시나리오]
+주 52시간제가 도입된 결과 전체 직원의 연봉이 n% 삭감 될 것으로 예상이 된다.
+그 삭감된 월급으로 신입사원을 선발할 예정이다.
+전제 직원의 삭감된 연봉으로 몇명의 신입사원을 뽑을 수 있을 것인가.
+단, 신입사원의 연봉은 현재 최저임금을 받는 자 기준으로 책정될 예정이다.
+
+- 결과 프로시저
+create or replace procedure now(downPercent number)
+
+is
+   v_sumsal number;
+   v_minsal number;
+   v_result number;
+
+begin
+   begin
+   select sum(sal)*downPercent*0.01
+      into v_sumsal
+   from emp;
+
+   select (min(sal)-(min(sal)*downPercent*0.01))
+      into v_minsal
+   from emp;
+   
+   select floor(v_sumsal/v_minsal) 
+      into v_result
+   from dual;
+
+   declare
+      cursor cur_emp
+      is
+      select * from emp;
+   begin
+      DBMS_OUTPUT.PUT_LINE('==========원래 연봉==========');
+      for v_emp_rec in cur_emp()
+      loop
+      DBMS_OUTPUT.PUT_LINE(v_emp_rec.ename || '    ' || v_emp_rec.sal);
+       END LOOP;
+   end;
+  end;
+  begin
+   declare
+      cursor cur_downemp
+      is
+      select ename, sal*0.9 as downSal from emp;
+   begin
+      DBMS_OUTPUT.PUT_LINE('==========깍인 연봉==========');
+      for v_emp_rec in cur_downemp()
+      loop
+      DBMS_OUTPUT.PUT_LINE(v_emp_rec.ename || '    ' || v_emp_rec.downSal);
+       END LOOP;
+      DBMS_OUTPUT.PUT_LINE('==========================');
+   end;
+  end;
+   DBMS_OUTPUT.PUT_LINE('깎은 총 연봉 : ' || v_sumsal);
+   DBMS_OUTPUT.PUT_LINE('신입사원 연봉 : ' || v_minsal);
+   DBMS_OUTPUT.PUT_LINE('뽑을 수 있는 신입 사원 : ' ||v_result);
+end;
+/
+
+실행 ============
+execute now(n);

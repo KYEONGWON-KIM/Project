@@ -1,0 +1,44 @@
+1. 
+
+1)올해 며칠이 지났는지 검색(포멧 yyyy/mm/dd)
+
+
+ 2)2019년 7월의 마지막 날짜는?
+
+2. 
+
+   2)커미션 받는 사원수, 총 커미션 합, 평균 구하기
+   
+   
+   3)'30,000'의 데이터에서 '15,000' 산술 연산하기 -  to_number(), 9사용
+   
+   
+   
+   
+   
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+   
+   [답]
+   1번----------------------------
+1)select sysdate - to_date(20190719,'yyyy/mm/dd') from dual;
+2)select last_day('19-07-19') from dual;
+   
+ 2번---------------------  
+ 1)
+ select count(comm) as 커미션대상자,
+sum(comm), avg(comm)
+from emp;   
+
+2)select to_number('30,000','99999')-to_number('15,000','99999') from dual;

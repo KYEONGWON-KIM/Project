@@ -1,0 +1,308 @@
+-- 5.join.sql
+
+/*
+1. 조인이란?
+	다수의 table간에  공통된 데이터를 기준으로 검색하는 명령어
+	다수의 table이란?
+		동일한 table을 논리적으로 다수의 table로 간주
+			- self join
+		물리적으로 다른 table간의 조인
+
+2. 사용 table 
+	1. emp & dept 
+	  : deptno 컬럼을 기준으로 연관되어 있음
+
+	 2. emp & salgrade
+	  : sal 컬럼을 기준으로 연관되어 있음
+
+
+3. table에 별칭 사용 
+	검색시 다중 table의 컬럼명이 다를 경우 table별칭 사용 불필요, 
+	서로 다른 table간의 컬럼명이 중복된 경우,
+	컬럼 구분을 위해 오라클 엔진에게 정확한 table 소속명을 알려줘야 함
+	- table명 또는 table별칭
+	- 주의사항 : 컬럼별칭 as[옵션], table별칭 as 사용 불가
+
+
+4. 조인 종류 
+	1. 동등 조인
+		 = 동등비교 연산자 사용
+		 : 사용 빈도 가장 높음
+		 : 테이블에서 같은 조건이 존재할 경우의 값 검색 
+
+	2. not-equi 조인
+		: 100% 일치하지 않고 특정 범위내의 데이터 조인시에 사용
+		: between ~ and(비교 연산자)
+
+	3. self 조인 
+		: 동일 테이블 내에서 진행되는 조인
+		: 동일 테이블 내에서 상이한 컬럼 참조
+			emp의 empno[사번]과 mgr[사번] 관계
+
+	4. outer 조인 
+		: 두개 이상의 테이블이 조인될때 특정 데이터가 모든 테이블에 존재하지 않고 컬럼은 존재하나 null값을 보유한 경우
+		  검색되지 않는 문제를 해결하기 위해 사용되는 조인
+		  null 값이기 때문에 배제된 행을 결과에 포함 할 수 있드며 (+) 기호를 조인 조건에서 정보가 부족한 컬럼쪽에 적용
+		
+		: oracle DB의 sql인 경우 데이터가 null 쪽 table 에 + 기호 표기 */
+
+-- 1. dept table의 구조 검색
+desc dept;
+-- dept table의 모든 데이터 검색
+select * from dept;
+select * from emp;
+select * from salgrade;
+
+
+--*** 1. 동등 조인 ***
+-- = 동등 비교
+-- 2. SMITH의 이름(ename), 사번(empno), 근무지역(부서위치)(loc) 정보를 검색
+select ename, empno, loc
+from emp, dept
+where ename='SMITH' and 
+emp.deptno=dept.deptno;
+
+/* deptno 위치의 불명확함으로 인한 오류 발생
+select ename, empno, loc
+from emp, dept
+where ename='SMITH';
+*/
+
+deptno 위치의 불명확함으로 인한 오류 발생
+select ename, empno, loc
+from emp, dept
+where ename='SMITH' and 
+e.deptno=d.deptno;
+
+-- 3. deptno가 동일한 모든 데이터 검색
+/* 발생 가능한 경우의 수
+1. deptno값이 두번 검색(중복 검색)
+ - 해결책 : 컬럼명 명확히 select 절에 작성
+ 2. 40번 부서에 소속된 직원은 없음, 따라서 40번 부서 정보 검색 불가 
+   - 해결책 
+   */
+emp & dept 
+select * from emp, dept
+where emp.deptno = dept.deptno;
+
+
+-- 4. 2+3 번 항목 결합해서 SMITH에 대한 모든 정보 검색하기
+(sal, comm, deptno, loc) 검색하기
+select ename, empno, sal, comm, emp.deptno, loc
+from emp, dept
+where ename ='SMITH' and emp.deptno=dept.deptno;
+
+/*조건 항목의 부족으로 인한 dept의 모든 row들 검색도
+select절에 dept만의 컬럼 검색을 안 햇다 하더라도
+from 절의 dept table 선언으로 인한 dept의 모든 row 수만큼 데이터 출력
+
+
+
+-- 5.  SMITH에 대한 이름(ename)과 부서번호(deptno), 부서명(dept의 dname) 검색하기
+select ename, e.deptno, dname 
+from emp e, dept d 
+where ename ='SMITH' and e.deptno = d.deptno;  
+
+
+
+-- 6. 조인을 사용해서 뉴욕에 근무하는 사원의 이름과 급여를 검색 
+-- loc='NEW YORK', ename, sal
+loc= 'NEW YORK', ename, sal
+select ename, sal, loc
+from emp, dept
+where lo='NEW YORK' AND emp.deptno=deptno.deptno;
+
+
+-- 7. 조인 사용해서 ACCOUNTING 부서(dname)에 소속된 사원의 이름과 입사일 검색
+select ename, hiredate
+from emp, dept
+where dept.dname='ACCOUNTING' and emp.deptno=dept.deptno;
+
+
+-- 8. 직급이 MANAGER인 사원의 이름, 부서명 검색
+select ename,dname
+from emp e, dept department_name
+where e.job='MANAGER' and e.deptno=d.deptno;
+
+
+-- *** 2. not-equi 조인 ***
+
+-- salgrade table(급여 등급 관련 table)
+-- 9. 사원의 급여가 몇 등급인지 검색
+-- between ~ and : 포함 
+select ename, grade
+from emp, salgrade
+where sal between losal and hisal;
+
+
+
+--? 등급이 3등급인 사원들의 이름과 급여 검색
+-- 3가지 sql문장은 모범답안 도출을 위한 사전 연습 단계
+select ename, grade
+from emp, salgrade
+where grade=3 and between losal and hisal ;
+
+/*틀린것
+select ename, grade
+from emp, salgrade
+where grade=3;
+*/
+
+[연습 예시 전체 검색 -> 답안작성]
+select * from salgrade;
+
+select ename, sal
+from emp, salgrade
+where grade=3 and sal between losal and hisal;
+
+
+-- 10. 사원(emp) 테이블의 부서 번호(deptno)로 부서 테이블을 참조하여 사원명, 부서번호, 부서의 이름(dname) 검색
+select ename, e.deptno, dname
+from emp e, dept
+where e.deptno = dept.deptno;
+
+
+-- *** 3. self 조인 ***
+
+-- 11. SMITH 직원의 메니저 이름 검색
+/* emp을 마치 두개의 table인듯 연상 
+1. 별칭 e : employee 직원 table
+2. 별칠 m : manager table*/
+
+--11. SMITH 직원의 매니저 이름 검색
+/* manager table의 ename 검색
+   employee table의 ename='SMITH'
+    -> SMITH이름으로 상사의 사번 검색도  
+	   -> 상사의 사번으로 manager의 사번으로 매니저 이름 검색*/
+	   
+	   select m.ename 
+	   from emp e, emp m
+	   where e.ename='SMITH' and e.mgr = m.empno;
+
+-- 12. 메니저 이름이 KING(m ename='KING')인 사원들의 이름(e ename)과 직무(e job) 검색
+select e.ename, e.job
+from emp e , emp m
+where m.ename='KING' and e.mgr =m.empno;
+
+
+
+--13. SMITH와 동일한 근무지에서 근무하는 사원의 이름 검색
+-- SMITH 데이터 절대 검색 불가 : hint - 부정연산자
+-- SMITH동일 근무지 - deptno로 검색
+-- deptno가 일치되는 사원의 이름 -  ename
+select  ename, loc, depno
+from emp e, emp m
+where SMITH=! & loc='DALLAS'(x)
+
+select you.ename
+from emp my, emp you
+where my.ename = 'SMITH' and my.deptno = you.deptno;
+
+select you.ename
+from emp my, emp you
+where my.ename = 'SMITH' and my.deptno = you.deptno
+and you.ename != 'SMITH';
+
+select you.ename
+from emp my, emp you
+where my.ename = 'SMITH' and my.deptno = you.deptno
+and you.ename <> 'SMITH';
+
+
+
+
+
+
+--*** 4. outer join ***
+-- 14. 모든 사원명, 메니저 명 검색, 단 메니저가 없는 사원도 검색되어야 함
+-- null값을 포함한 검색도 반드시 필수
+	-- 데이터 표현이 부족한 쪽에 + 기호 표기
+/* empno - 사원번호(12개 즉 직원수 만큼 존재)
+    mgr - 메니저 번호(실제 사용 가능한 데이터는 null을 제외한 11개)
+           - null이라는 데이터는 empno에는 미존재
+    e.mgr = m.empno(+)
+    	- 사원의 mgr(e.mgr) - null 또는 4자리 정수값
+	- 메니저의 empno(m.empno) - 4자리 정수값만  */
+
+
+/* 1. 모든 사원의 모든 매니저명 포함해서 검색
+   - 매니저가 없는 사원일지라도 해당 사원의 정보 포함해서 검색 
+   2. 경우의 수1 : 매니저가 없는 사원이 있을수 있다
+      경우의 수2 : 매니저가 있는 사원이 있을수 있다 
+     
+   3. 발생된 논리적인 오류   
+   - 매니저가 없는 사원 정보가 검색 불가능인 경우 
+   
+   4. 해결책
+   1. 모든 사원은 매니저는 KING인 경우는 없지만 다른 사원들은 존재
+   2. KING의 mgr 컬럼값은 null이나, 검색이 되어야 함
+   3. 매니저 table에는 null이라는 매니저 사번은 존재하지 않음
+   4. 검색
+      null값이라도 검색이 되어야 함
+      매니저 테이블에는 매니저사번이 null이 매니저는 없지만 검색에 포함해야만 사원 table의 KING도 검색
+   5. 데이터가 없는 쪽은 사원 table의 mgr과 매니저 table의 매니저사번 
+      - 사원 table에는 mgr 컬럼값에 null 보유 
+      - 매니저 table의 매니저 사번에는 null 자체가 없음
+      - 결론 : 데이터가 없는 쪽은  메니저 table 
+      
+*/
+select e.ename 사원명, m.ename 매니저명
+from emp e, emp m
+where e.mgr = m.empno(+);
+
+
+
+
+
+
+-- 15. 모든 직원명(ename), 부서번호(deptno, 부서명(dname) 검색
+-- 부서 테이블의 40번 부서와 조인할 사원 테이블의 부서 번호가 없지만,
+-- outer join이용해서 40번 부서의 부서 이름도 검색하기 
+
+-- 논리적인 오류 : emp에는 40에 해당하는 정보가 없음. 따라서 두개의 table상에 존재하는 deptno는 40번 부서 정도를 
+-- 보유한 dept table의 컬럼이어야 함
+
+-- 40번 부서 번호 검색 불가 
+select ename, emp.deptno, dname
+from emp, dept
+where emp.deptno(+) = dept.deptno;
+
+
+-- 모법 답안
+select ename, dept.deptno, dname
+from emp, dept
+where emp.deptno(+) = dept.deptno;
+
+
+
+
+--과제==
+-- *** hr/hr 계정에서 test
+--16. 직원의 이름과 직책(job_title)을 출력(검색)
+--	단, 사용되지 않는 직책이 있다면 그 직책이 정보도 검색에 포함
+--     검색 정보 이름(2개)들과 job_title(직책) 
+
+	-- 문제 풀이를 위한 table의 컬럼값들 확인해 보기
+select first_name, last_name, job_title 
+from employees e, jobs j
+where e.job_id(+) = j.job_id;
+
+
+
+--17. 직원들의 이름(first_name), 입사일, 부서명(department_name) 검색하기
+
+
+-- 단, 부서가 없는 직원이 있다면 그 직원 정보도 검색에 포함시키기
+
+
+
+select first_name, hire_date, department_name
+from employees e, departments d
+where e.department_id = d.department_id(+);
+
+
+
+
+
+
+

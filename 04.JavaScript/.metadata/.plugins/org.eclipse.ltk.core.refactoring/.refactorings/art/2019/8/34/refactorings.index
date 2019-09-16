@@ -1,0 +1,73 @@
+1566438705497	Rename resource 'DDL.erm'
+1566438713395	Rename resource 'er.erm'
+1566439828114	Delete element
+1566439861969	Move '3.erm' to 'sql'
+1566439872880	Rename resource '3.erm'
+1566440583519	Delete element
+1566440831030	Rename resource 'art.erm'
+1566440864037	Delete element
+1566440877364	Delete element
+1566440929358	Delete element
+1566441110412	Delete element
+1566441135209	Delete element
+1566441230645	Delete element
+1566441290744	Delete element
+1566441569838	Delete element
+1566441628786	Delete element
+1566441660491	Delete element
+1566441678797	Delete element
+1566442212552	Move folder
+1566442410414	Rename resource 'probonoDML.sql'
+1566443481544	Delete elements
+1566443504769	Rename package 'probono.model'
+1566443661147	Rename type 'ActivistDAO'
+1566443678275	Rename type 'RecipientDAO'
+1566444350763	Rename package 'dao'
+1566444413727	Rename package 'dto'
+1566444437747	Rename package 'probono.exception'
+1566450702892	Rename package 'probono.controller'
+1566450719398	Rename type 'ProbonoFrontController'
+1566451105464	Rename type 'ProbonoService'
+1566466004703	Rename compilation unit 'UserinfoDAO.java'
+1566466070680	Rename compilation unit 'UserInfoDTO.java'
+1566466207983	Rename type 'UserinfoDTO'
+1566467500548	Delete element
+1566467778429	Rename package 'art.exception'
+1566469729641	Delete element
+1566469742749	Delete element
+1566527196279	Rename type 'Controller'
+1566527338184	Delete element
+1566538338021	Rename resource 'activistInsert.html'
+1566538348518	Rename resource 'activistDetail.jsp'
+1566538429202	Rename resource 'activistList.jsp'
+1566538458883	Rename resource 'activistUpdate.jsp'
+1566538578396	Rename resource 'UserInfo.jsp'
+1566538592189	Rename resource 'probonoProjectList.jsp'
+1566538712921	Delete element
+1566538718388	Delete element
+1566538724887	Delete element
+1566538729917	Delete element
+1566538733869	Delete element
+1566538737977	Delete element
+1566538741945	Delete element
+1566538999191	Rename resource 'index.html'
+1566540172405	Rename resource 'activistInsert.html'
+1566540192166	Rename resource 'userinfoInsert.html'
+1566540377148	Rename resource 'Insert.html'
+1566540454536	Move 'voteInsert.html' to 'WebContent'
+1566542124986	Rename resource 'activistDetail.jsp'
+1566543551672	Copy file
+1566543576510	Rename resource 'userinfoDetail2.jsp'
+1566543622196	Rename resource 'userinfoDetail.jsp'
+1566544285464	Rename resource 'activistUpdate.jsp'
+1566544695224	Copy file
+1566545525941	Rename resource 'probonoProjectList.jsp'
+1566545942947	Delete element
+1566546493886	Rename resource 'probonoProjectList.jsp'
+1566547335537	Delete element
+1566547372247	Rename resource 'activistList.jsp'
+1566547625161	Copy file
+1566548225109	Delete element
+1566552810849	Rename resource 'probonoProjectList.jsp'
+1566553244944	Delete element
+1566557650512	Copy file

@@ -1,0 +1,21 @@
+(주)SCOTT의 SMITH 이사님이 월봉에 불만이 많아, JAMES 대리에게 월급 테이블을 검색해달라고 합니다.
+
+어쩔수 없이 검색을 해드립니다.
+select ename, sal from emp;
+
+SMITH이사님이 월급 기준이 뭔지 알아보라고 합니다.
+JAMES는 입사일 기준으로 검색을 해봅니다.
+select ename, round(sysdate - hiredate) 일, sal from emp order by 일 asc;
+
+입사한지 오래되었다고해서 월급을 많이 받는 것은 아니라는 결론이 나왔습니다.
+추가로 업무에 따른 월급 차이가 있는지 확인해달라 합니다. 
+select ename, round(sysdate - hiredate) 일, sal, job from emp order by '일' asc, job desc;
+
+확인해보니, 상관이 없습니다.
+
+이사님은 사장님실에 들어갔습니다.
+
+
+
+
+

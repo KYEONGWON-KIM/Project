@@ -1,0 +1,13 @@
+INDEX VERSION 1.131
+C:\0.encore\04.JavaScript\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3008823065.index
+\step02_axiosResponse\src
+C:\0.encore\04.JavaScript\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3934533279.index
+\report_vue\src
+C:\0.encore\04.JavaScript\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\706936763.index
+\step10_miniProject_s\src
+C:\0.encore\04.JavaScript\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4056626334.index
+\art\src
+C:\0.encore\04.JavaScript\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\768824097.index
+\step01_jBasic\src
+C:\0.encore\04.JavaScript\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2442369436.index
+\step01_Basic\src

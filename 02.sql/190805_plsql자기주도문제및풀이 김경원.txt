@@ -1,0 +1,74 @@
+declare 
+       no integer;
+begin
+       no := '10';
+	    no := no+0;
+		 no := no*0;
+		 no := no/0;
+		 no := '경원';
+	   dbms_output.put_line('결과1' || no);
+	
+	   exception
+	             when others then
+	dbms_output.put_line('예외처리');
+            dbms_output.put_line('결과 2 ');
+            dbms_output.put_line('결과 3' );	 
+            dbms_output.put_line('결과 4' );
+            dbms_output.put_line('결과 5');	   
+end;
+/
+
+--? 개인이 in out 모든 review 문제 만들고 답안 도출
+-- 제약조건 : dept01 table 활용하기 
+
+부서번호로 지역 검색하기
+/*프로시저 이름 : info_deptinfo
+
+	  
+[틀린거]	  
+create or replace procedure info_deptinfo
+(v_deptno IN dept01.deptno%type,
+v_dname OUT dept01.dname%type,
+v_loc OUT dept01.loc%type  )
+is
+begin
+      select dname, loc
+	  into v_dname, v_loc
+	  from dept01
+	  where deptno=v_deptno;
+end;	  
+/
+-- 프로시저 실행 결과값을 대입받을 변수 선언
+variable vdname varchar2(20);
+variable vloc varchar2(20, :vloc);
+
+--프로시저 호출(값을 대입받을 out mode에 선언된 변수 적용)
+excute info_deptinfo(10, :vdname, :vloc)
+
+--변수값을 출력 
+print vdname;
+print vloc;
+
+-------------------------
+[맞는거]	  
+create or replace procedure info_deptinfo
+(v_deptno IN dept01.deptno%type,
+v_loc OUT dept01.loc%type  )
+is
+begin
+      select loc
+	  into v_loc
+	  from dept01
+	  where deptno=v_deptno;
+end;	  
+/
+-- 프로시저 실행 결과값을 대입받을 변수 선언
+variable vdname varchar2(20);
+variable vloc varchar2(20, :vloc);
+
+--프로시저 호출(값을 대입받을 out mode에 선언된 변수 적용)
+excute info_deptinfo(10, :vdname, :vloc)
+
+--변수값을 출력 
+print vloc;
+    

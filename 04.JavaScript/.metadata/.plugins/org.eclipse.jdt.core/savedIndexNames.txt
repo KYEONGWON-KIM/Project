@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\0.encore\04.JavaScript\.metadata\.plugins\org.eclipse.jdt.core
+3039059972.index
+2812107887.index
+716384820.index

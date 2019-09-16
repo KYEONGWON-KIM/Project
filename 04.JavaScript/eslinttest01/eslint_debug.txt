@@ -1,0 +1,39 @@
+1.eslint(semi) 세미콜론을 붙여준다
+
+2.eslint(space-before-function-paren)
+   function () <- 공백없이 function()로 붙임
+
+3.eslint(no-constant-condition)
+   if (true) {
+    const v52 = '블록 레벨 scope의 변수';
+  } 
+  true 를 줘서 무조건 실행하는데 왜 조건식을 주냐는 제약사항
+  
+4.eslint(eol-last)
+  'eol-last': 2, 
+   document.write(data4); 마지막 코드 후에 /n을 추가해주는것
+   
+5.eslint(space-before-function-paren)
+   (function (one) x
+   (function(one)  o   파라매터값 앞에 붙여주기
+
+6. eslint(space-before-blocks)
+   (function(one) {  {} 중가로가 딱 붙는 형태에서 한칸 띄우기 o
+   (function(one){ x
+
+7. eslint(arrow-parens)
+   isTenUp = (value) => {   변수가 하나일 경우 ()을 빼줌
+
+8. eslint(no-trailing-spaces)
+   스페이스를 추가하지 말것
+
+9. eslint(keyword-spacing) 
+   if 후에 스페이스바로 띄워줘야함 if (cur%4 == 0)   o
+                    if(cur%4 == 0)    x
+
+10.eslint(comma-spacing)
+   콤마 후에 공간을 줘야한다
+   [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+   
+11.eslint(no-useless-escape)
+   \"  불필요한 역슬래쉬 삭제 요구에러

@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\0.encore\06.Vue.js\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2009606718.index
+3405724522.index
+1044938121.index
+2921762866.index
+3879150288.index
+345970644.index

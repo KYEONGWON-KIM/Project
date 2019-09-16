@@ -1,0 +1,19 @@
+문제
+1. 부서별 가장 오래 입사한 직원을 찾고, 81년도 이후의 이력만 출력해 주세요.	
+2. 부서에서 월 급여의 평균을 구해주세요. (소수점 1자리까지 표현하세요.)
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------
+
+답
+1. select min(hiredate) from emp group by deptno having min(hiredate) >'81/01/01';
+2. select round(avg(sal),1) deptno from emp group by deptno;

@@ -1,0 +1,31 @@
+학습내용
+
+1. JDBC
+    - JAVA DataBase Connectivity
+2. 필요성
+   - DB 종류에 종속적이지 않은 DB 연동 표준 API
+   -DB 연동을 위한 기본 필요 정보는
+     1. 어떤 DB인지
+     2. DB의 IP
+     3. DB의 ID/PW
+     4. DB연동 driver
+        C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar
+   
+3. jdk 기본 API
+
+4. 확장 API(Framework)
+
+    1. MyBatis 
+      - iBatis 2버전 
+    2. Hibernate - JPA(쿠팡, 우아한테크, 네이버)
+    
+5. 실습 구조
+    1. MVC + DAO[Data Access Object]+ 
+    
+6. 사고력 키우기
+    1. client가 모든 dept 정보 요청
+      = select * from dept_copy;
+            검색된 결과값을 자바 객체로 매핑해서 html 구조의 파일에 출력
+            설계시 필요한 자바 클래스들은?
+      1. DAO 클래스의 메소드 
+    

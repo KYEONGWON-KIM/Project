@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;step01_jBasic/step01_jBasic.txt&apos; to &apos;step01_Basic.txt&apos;" description="Rename resource &apos;step01_jBasic.txt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="step01_jBasic.txt" name="step01_Basic.txt" stamp="1567727157284" updateReferences="true"/>
+</session>

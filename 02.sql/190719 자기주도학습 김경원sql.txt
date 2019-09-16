@@ -1,0 +1,130 @@
+
+ [hr/hr employees]
+Name                                    Null?    Type
+ ------------------------------------------------------------------------------------------
+ EMPLOYEE_ID                            NOT NULL NUMBER(6)
+ FIRST_NAME                             VARCHAR2(20)
+ LAST_NAME                              NOT NULL VARCHAR2(25)
+ EMAIL                                  NOT NULL VARCHAR2(25)
+ PHONE_NUMBER                           VARCHAR2(20)
+ HIRE_DATE                              NOT NULL DATE
+ JOB_ID                                 NOT NULL VARCHAR2(10)
+ SALARY                                 NUMBER(8,2)
+ COMMISSION_PCT                         NUMBER(2,2)
+ MANAGER_ID                             NUMBER(6)
+ DEPARTMENT_ID                          NUMBER(4)
+ 
+ 
+1) 
+SALARY이  3100 이하(SALARY  <= 3100)이거나(or사용) 9500이상인(SALARY  >= 9500) 사원 아이디(JOB_ID)에서 
+JOB_ID의(and사용) 첫 글자가 M인 JOB_ID를 찾아주세요.
+ 
+
+
+
+
+2)employees 전체값에서 LAST_NAME :King Baida이름을 가진 사람을 찾으시오.
+
+
+
+
+3)전체 정보에서 HIRE_DATE가 07/12/07, 05/03/19 값을 찾으시오.
+
+
+
+
+
+4)PHONE_NUMBER = 3 590.423.5567이고 SALARY >= 2500인 PHONE_NUMBER, SALARY을 출력하라.
+
+
+
+
+
+
+5) JOB_ID, SALARY, LAST_NAME을 JOB_ID 기준으로 오름차순 정렬, 
+SALARY 두번째 숫자가 7로 나오게 출력하라.
+
+
+
+
+
+
+
+
+6) SALARY, COMMISSION_PCT, MANAGER_ID, DEPARTMENT_ID 검색시
+DEPARTMENT_ID=80을 찾으시시고 SALARY 기준으로 내림차순 정렬.
+
+
+
+
+
+
+
+7) JOB_ID이 IT_PROG 사람의 모든 정보를 출력하라.
+select * from employees where JOB_ID = 'IT_PROG';
+ 
+ 
+ 
+ 
+ 
+ 
+8) employees 테이블 데이터에서 각  PHONE_NUMBER를 기준으로 연봉이 높은 것 부터 정렬한 후, LAST_NAME ,  PHONE_NUMBER, SALARY을 출력하시오
+
+ 
+
+
+
+
+
+
+
+-------------------------답. 1--------------
+
+select JOB_ID, SALARY
+from employees
+where JOB_ID like 'M@' and SALARY<= 3100 or SALARY>= 9500;
+
+
+
+-------------------------답. 2--------------
+select * from employees where  LAST_NAME   
+in ('King', 'Baida');
+
+
+
+-------------------------답. 3--------------
+select * from employees where HIRE_DATE  in ('07/12/07','05/03/19');
+
+
+
+-------------------------답. 4--------------
+select PHONE_NUMBER, SALARY
+from employees;
+where PHONE_NUMBER= '3 590.423.5567' and SALARY '<2500';
+
+
+
+-------------------------답. 5--------------
+select JOB_ID,SALARY, LAST_NAME from employees 
+where SALARY like '_7%'
+ order by JOB_ID asc;
+ 
+ 
+ 
+-------------------------답. 6--------------
+select SALARY, COMMISSION_PCT, MANAGER_ID, DEPARTMENT_ID from employees
+where DEPARTMENT_ID=80
+order by SALARY desc ;
+
+ 
+-------------------------답. 7--------------
+select * from employees where JOB_ID = 'IT_PROG';
+
+
+
+-------------------------답. 8--------------
+select LAST_NAME ,  PHONE_NUMBER, SALARY from employees
+  order by  PHONE_NUMBER asc, SALARY desc;
+
+
+

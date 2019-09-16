@@ -1,0 +1,29 @@
+1. emp 테이블에서 부서 번호, 부서별 사원 수, 부서별 가장 봉급을 출력하세요.
+	조건 1. 사원수 기준 오름차순
+	조건 3. 출력 데이터의 컬럼 명을 적절한 이름으로 교체
+
+2. SMITH의 이름, 사번, 근무지역, 등급(sal의 grade) 정보를 검색하세요. (emp, dept, salgrade 테이블 사용) 
+
+3. SMITH와 DALLAS에서 근무하는에 근무하는 사원의 이름, 부서번호, 입사일자 검색, 이름 오름차순 정렬.
+  
+
+
+
+
+
+
+
+
+--------------답------------     
+
+
+1. select deptno 부서번호, count(*) 사원수, max(sal) as 갑부 from emp group by deptno order by 사원수;
+
+2. select ename, empno, loc, s.grade from emp e, dept d, salgrade s where ename = 'SMITH' and e.deptno=d.deptno and sal between losal and hisal;
+
+3. select ename, deptno, hiredate 
+from  emp
+where deptno =(select deptno
+                     from dept
+     	         where loc ='DALLAS' and ename != 'SMITH')
+		order by ename asc;

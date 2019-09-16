@@ -1,0 +1,117 @@
+<%@ page language="java" contentType="application/json; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% response.setHeader("Access-Control-Allow-Origin", "*"); %>
+[
+  {
+    "location": "대전광역시",
+    "java:": "30%",
+    "python:": "43%",
+    "C:": "10%",
+    "javascript:": "17%"
+  },
+  {
+    "location": "서울특별시",
+    "java:": "35%",
+    "python:": "31%",
+    "C:": "7%",
+    "javascript:": "27%"
+  },
+  {
+    "location": "경기도",
+    "java:": "31%",
+    "python:": "37%",
+    "C:": "10%",
+    "javascript:": "22%"
+  },
+  {
+    "location": "제주특별자치도",
+    "java:": "34%",
+    "python:": "38%",
+    "C:": "6%",
+    "javascript:": "22%"
+  },
+  {
+    "location": "경상북도",
+    "java:": "31%",
+    "python:": "40%",
+    "C:": "17%",
+    "javascript:": "12%"
+  },
+  {
+    "location": "대구광역시",
+    "java:": "35%",
+    "python:": "30%",
+    "C:": "15%",
+    "javascript:": "20%"
+  },
+  {
+    "location": "인천광역시",
+    "java:": "34%",
+    "python:": "33%",
+    "C:": "12%",
+    "javascript:": "21%"
+  },
+  {
+    "location": "충청남도",
+    "java:": "30%",
+    "python:": "36%",
+    "C:": "20%",
+    "javascript:": "14%"
+  },
+  {
+    "location": "울산광역시",
+    "java:": "28%",
+    "python:": "42%",
+    "C:": "12%",
+    "javascript:": "18%"
+  },
+  {
+    "location": "광주광역시",
+    "java:": "31%",
+    "python:": "34%",
+    "C:": "17%",
+    "javascript:": "18%"
+  },
+  {
+    "location": "부산광역시",
+    "java:": "33%",
+    "python:": "32%",
+    "C:": "13%",
+    "javascript:": "22%"
+  },
+  {
+    "location": "충청북도",
+    "java:": "32%",
+    "python:": "33%",
+    "C:": "17%",
+    "javascript:": "18%"
+  },
+  {
+    "location": "강원도",
+    "java:": "34%",
+    "python:": "32%",
+    "C:": "15%",
+    "javascript:": "19%"
+  },
+  {
+    "location": "전라북도",
+    "java:": "36%",
+    "python:": "33%",
+    "C:": "16%",
+    "javascript:": "15%"
+  },
+  {
+    "location": "전라남도",
+    "java:": "38%",
+    "python:": "31%",
+    "C:": "10%",
+    "javascript:": "21%"
+  },
+  {
+    "location": "경상남도",
+    "java:": "33%",
+    "python:": "31%",
+    "C:": "16%",
+    "javascript:": "20%"
+  }
+]

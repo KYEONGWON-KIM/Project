@@ -17,7 +17,7 @@
 ### 1. 정제된 json 데이터를 oracle jsp에 넣는다
 #### - 한국은 5년치, 세계 데이터는 1년치
 
-### 2. 다른 컴퓨터의 oracle에 저장되어 있는 json 데이터를 visual studio code에서 axios를 사용해 가져온다.
+### 2. 팀원의 oracle에 저장되어 있는 json 데이터를 visual studio code에서 axios를 사용해 가져온다.
 
 ### 3. google 차트를 이용하여 시각화 한다.
 
